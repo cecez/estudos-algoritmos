@@ -2,8 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TraversalTest {
-
+class TraversalRecursiveTest {
     @Test
     void traversalWithNodes() {
         Node nodoA = new Node('A');
@@ -14,17 +13,18 @@ class TraversalTest {
         nodoB.next = nodoC;
         nodoC.next = nodoD;
 
-        assertEquals("ABCD", Traversal.traversal(nodoA));
+        assertEquals("ABCD", TraversalRecursive.traversalRecursive(nodoA));
     }
 
     @Test
     void traversalWithOneNode() {
         Node nodoA = new Node('A');
-        assertEquals("A", Traversal.traversal(nodoA));
+        assertEquals("A", TraversalRecursive.traversalRecursive(nodoA));
     }
 
     @Test
     void traversalWithoutNodes() {
-        assertEquals("", Traversal.traversal(null));
+        assertEquals("", TraversalRecursive.traversalRecursive(null));
     }
+
 }

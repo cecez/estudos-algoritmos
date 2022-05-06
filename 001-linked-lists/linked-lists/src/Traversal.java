@@ -1,11 +1,15 @@
 public class Traversal {
 
     public static String traversal(Node head) {
-        String output = "";
+        StringBuilder output = new StringBuilder();
 
+        Node current = head;
+        while (current != null) {
+            output.append(current.value);
+            current = current.next;
+        }
 
-
-        return output;
+        return output.toString();
     }
 
 }
