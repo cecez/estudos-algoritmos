@@ -1,0 +1,32 @@
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class LinkedListValuesTest {
+
+    @Test
+    void linkedListWithFourElements() {
+        Node nodeA = new Node('A');
+        Node nodeB = new Node('B');
+        Node nodeC = new Node('C');
+        Node nodeD = new Node('D');
+        nodeA.next = nodeB;
+        nodeB.next = nodeC;
+        nodeC.next = nodeD;
+
+        assertEquals(List.of('A', 'B', 'C', 'D'), LinkedListValues.linkedListValues(nodeA));
+    }
+
+    @Test
+    void linkedListWithOneElement() {
+        Node nodeA = new Node('A');
+        assertEquals(List.of('A'), LinkedListValues.linkedListValues(nodeA));
+    }
+
+    @Test
+    void linkedListWithoutElements() {
+        assertEquals(List.of(), LinkedListValues.linkedListValues(null));
+    }
+}
