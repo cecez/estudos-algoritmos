@@ -2,15 +2,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- *
- * A-B, X-Y     => A-X-B-Y
- * A-B, X-Y-Z   => A-X-B-Y-Z
- * A-B-C, X-Y   => A-X-B-Y-C
- * A-B, W-X-Y-Z => A-W-B-X-Y-Z
- * A-B-C-D, X-Y => A-X-B-Y-C-D
- *
- */
 class ZipperListIterativeTest {
 
     @Test
@@ -128,6 +119,118 @@ class ZipperListIterativeTest {
         assertEquals(
                 "A -> X -> null",
                 PrintLinkedList.print(zipListAtoX)
+        );
+    }
+
+    @Test
+    /*
+     * A-B, X-Y     => A-X-B-Y
+     */
+    void it_tests_a_case_with_2_to_2_node_lists() {
+        Node nodeA = new Node('A');
+        Node nodeB = new Node('B');
+        Node nodeX = new Node('X');
+        Node nodeY = new Node('Y');
+        nodeA.next = nodeB;
+        nodeX.next = nodeY;
+
+        Node zipListABtoXY = ZipperListIterative.run(nodeA, nodeX);
+
+        assertEquals(
+                "A -> X -> B -> Y -> null",
+                PrintLinkedList.print(zipListABtoXY)
+        );
+    }
+
+    @Test
+    /*
+         * A-B, X-Y-Z   => A-X-B-Y-Z
+         */
+    void it_tests_a_case_with_2_to_3_node_lists() {
+        Node nodeA = new Node('A');
+        Node nodeB = new Node('B');
+        Node nodeX = new Node('X');
+        Node nodeY = new Node('Y');
+        Node nodeZ = new Node('Z');
+        nodeA.next = nodeB;
+        nodeX.next = nodeY;
+        nodeY.next = nodeZ;
+
+        Node zipListABtoXYZ = ZipperListIterative.run(nodeA, nodeX);
+
+        assertEquals(
+                "A -> X -> B -> Y -> Z -> null",
+                PrintLinkedList.print(zipListABtoXYZ)
+        );
+    }
+
+    @Test
+    /*
+         * A-B-C, X-Y   => A-X-B-Y-C         *
+     */
+    void it_tests_a_case_with_3_to_2_node_lists() {
+        Node nodeA = new Node('A');
+        Node nodeB = new Node('B');
+        Node nodeC = new Node('C');
+        Node nodeX = new Node('X');
+        Node nodeY = new Node('Y');
+        nodeA.next = nodeB;
+        nodeB.next = nodeC;
+        nodeX.next = nodeY;
+
+        Node zipListABCtoXY = ZipperListIterative.run(nodeA, nodeX);
+
+        assertEquals(
+                "A -> X -> B -> Y -> C -> null",
+                PrintLinkedList.print(zipListABCtoXY)
+        );
+    }
+
+    @Test
+    /*
+         * A-B, W-X-Y-Z => A-W-B-X-Y-Z
+         */
+    void it_tests_a_case_with_2_to_4_node_lists() {
+        Node nodeA = new Node('A');
+        Node nodeB = new Node('B');
+        Node nodeW = new Node('W');
+        Node nodeX = new Node('X');
+        Node nodeY = new Node('Y');
+        Node nodeZ = new Node('Z');
+        nodeA.next = nodeB;
+        nodeW.next = nodeX;
+        nodeX.next = nodeY;
+        nodeY.next = nodeZ;
+
+        Node zipListABtoWXYZ = ZipperListIterative.run(nodeA, nodeW);
+
+        assertEquals(
+                "A -> W -> B -> X -> Y -> Z -> null",
+                PrintLinkedList.print(zipListABtoWXYZ)
+        );
+    }
+
+    @Test
+    /*
+     * A-B-C-D, X-Y => A-X-B-Y-C-D
+     */
+    void it_tests_a_case_with_4_to_2_node_lists() {
+        Node nodeA = new Node('A');
+        Node nodeB = new Node('B');
+        Node nodeC = new Node('C');
+        Node nodeD = new Node('D');
+        Node nodeX = new Node('X');
+        Node nodeY = new Node('Y');
+        nodeA.next = nodeB;
+        nodeB.next = nodeC;
+        nodeC.next = nodeD;
+        nodeX.next = nodeY;
+
+        Node zipListABCDtoXY = ZipperListIterative.run(nodeA, nodeX);
+
+        assertEquals(
+                "A -> X -> B -> Y -> C -> D -> null",
+                PrintLinkedList.print(zipListABCDtoXY)
         );
     }
 

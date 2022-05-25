@@ -1,4 +1,10 @@
 public class ZipperListIterative {
+    /**
+     * n = length of list a
+     * m = length of list b
+     * Time: O(min(n, m))
+     * Space: O(1)
+     */
     public static Node run(Node headA, Node headB) {
 
         if (headA == null) return headB;
