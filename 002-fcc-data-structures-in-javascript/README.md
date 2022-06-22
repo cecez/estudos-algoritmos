@@ -27,5 +27,24 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 ## Stacks
 - a data structure that stores values in a LIFO (last in, first out) order.
 - simplest solution: an array with its push and pop methods.
+- example in 1-stacks.js
 
-// todo continue in queues
+## Queues
+- FIFO (first in, first out)
+- simplest solution: an array with unshift and pop methods (or shift and push)
+- example in 2-queues.js
+
+## Linked List
+- list of nodes chained by a "pointer" property
+- may implement get, set, push, pop, remove, shift, unshift methods
+
+### Singly Linked Lists
+- Node(value, next)
+
+### Doubly linked Lists
+- Node(value, previous, next)
+
+## Trees
+- parent/child relationship
+- one root, leaf nodes (without children)
+- common types: binary tree, binary search tree and heap
