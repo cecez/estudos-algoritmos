@@ -43,8 +43,13 @@ class BinarySearchTree {
   }
 
   delete(node) {
+    if (this.root === null) {
+      return;
+    }
+
     let previous = null;
     let current = this.root;
+    let isLeft;
     while (current != null) {
       let nodeToBeRemovedFound = current.value === node.value;
       if (nodeToBeRemovedFound) {
@@ -58,7 +63,11 @@ class BinarySearchTree {
             return;
           }
 
-          nodeLinkToBeChanged = null;
+          if (isLeft) {
+            previous.left = null;
+          } else {
+            previous.right = null;
+          }
           return;
         }
 
@@ -74,18 +83,33 @@ class BinarySearchTree {
           }
 
           if (doesntHaveLeftChildren) {
-            nodeLinkToBeChanged = current.right;
+            if (isLeft) {
+              previous.left = current.right;
+            } else {
+              previous.right = current.right;
+            }
             return;
           }
-          nodeLinkToBeChanged = current.left;
+          if (isLeft) {
+            previous.left = current.left;
+          } else {
+            previous.right = current.left;
+          }
           return;
         }
 
         // hard case, both sides not null (choose left and re-insert its children)
-        // todo (root case)
         let newNode = new Node(current.left.value);
         newNode.right = current.right;
-        nodeLinkToBeChanged = newNode;
+        if (isRoot) {
+          this.root = newNode;
+        } else {
+          if (isLeft) {
+            previous.left = newNode;
+          } else {
+            previous.right = newNode;
+          }
+        }
         this.insertNodes(current.left.left);
         this.insertNodes(current.left.right);
         return;
@@ -94,10 +118,10 @@ class BinarySearchTree {
       previous = current;
       if (node.value < current.value) {
         current = current.left;
-        nodeLinkToBeChanged = previous.left;
+        isLeft = true;
       } else {
         current = current.right;
-        nodeLinkToBeChanged = previous.right;
+        isLeft = false;
       }
     }
   }

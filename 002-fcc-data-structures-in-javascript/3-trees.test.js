@@ -43,6 +43,22 @@ test("inserts nodes in a binary tree", () => {
   newBinaryTree.insert(new Node(15));
   newBinaryTree.insert(new Node(55));
   newBinaryTree.insert(new Node(52));
-  
+
   expect(treeTraversal(newBinaryTree.root)).toBe("10-15-25-50-52-55-");
-})
+});
+
+test("deleting nodes", () => {
+  const newBinaryTree = new BinarySearchTree(new Node(50));
+  newBinaryTree.insert(new Node(25));
+  newBinaryTree.insert(new Node(10));
+  newBinaryTree.insert(new Node(15));
+  newBinaryTree.insert(new Node(55));
+  newBinaryTree.insert(new Node(52));
+
+  newBinaryTree.delete(new Node(11)); // inexistent node
+  newBinaryTree.delete(new Node(50)); // root node, both sides
+  newBinaryTree.delete(new Node(10)); // one children
+  newBinaryTree.delete(new Node(52)); // without children
+
+  expect(treeTraversal(newBinaryTree.root)).toBe("15-25-55-");
+});
