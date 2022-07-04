@@ -48,3 +48,16 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 - parent/child relationship
 - one root, leaf nodes (without children)
 - common types: binary tree, binary search tree and heap
+
+### Heaps
+- main types: maxHeap (parent greater) and minHeap (parent smaller)
+- no guarantees between siblings
+- binary heaps are related to priority queues
+
+## Graphs
+- useful for: social networks, geolocalization, recommendation systems
+- undirected or directed
+- weighted or unweighted
+- how to represent?
+    - adjacency matrix: two dimensions array with boolean values informing if there is a connection
+    - adjacency list: key-pair(node) values(connections)
